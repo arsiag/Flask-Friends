@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Friends</title>
+        <style>
+                body {
+                    width: 80%;
+                    margin: 0px auto;
+                    text-align: center;
+                    padding-left: 20%;
+                    padding-right: 20%;
+                    }
+                #display{
+                    width: 40%;
+                    /* border: 3px solid red; */
+                    padding-left: 10%;
+                    padding-right: 10%;
+                    /* text-align: center; */
+                    text-align: left;
+                }
+                table{
+                    width: 90%;
+                    margin: 0px auto;
+                    border: 1px solid black;
+                    overflow: scroll;
+                }
+                input{
+                    float: right;
+                    position: relative;
+                    right: 20px;
+                }
+                thead{
+                    background-color: lightgrey;
+                }
+                
+        </style>
+    </head>
+    <body>
+        <div id="display">
+            <h1>Friends:</h1>
+            <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Friends Since</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for friend in myfriends: %}
+                        <tr>
+                            <td>{{ friend['name'] }}</td>
+                            <td>{{ friend['age'] }}</td>
+                            <td>{{ friend['friends_since'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+                
+            <h1>Add a Friend:</h1>
+            <form action='/addfriend' method='POST'>
+                <p><label for="name">Name: <input type="text" name="name" id="name"></label></p>
+                <p><label for="age">Age: <input type="text" name="age" id="age"></label></p>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
